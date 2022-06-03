@@ -36,10 +36,10 @@ async def give_filter(client, message):
     if k == False:
         await auto_filter(client, message)
 
-@Client.on_callback_query(filters.regex(r"^next" , r"^files"))
+@Client.on_callback_query(filters.regex(r"^next"))
 async def key(bot, query):
-   files, ident, req, key, offset = query.data.split("_")
-    if int(files) not in [query.from_user.id, 0]:
+   ident, req, key, offset = query.data.split("_")
+    if int(req) not in [query.from_user.id, 0]:
         return await query.answer("👀mMm", show_alert=True)
 
     try:
