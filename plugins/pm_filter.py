@@ -38,15 +38,15 @@ async def give_filter(client, message):
 
 @Client.on_callback_query(filters.regex(r"^next"))
 async def key(bot, query):
-   ident, req, key, offset = query.data.split("_")
+    ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("👀mMm", show_alert=True)
+        return await bot.answer("👀👩‍💻", show_alert=True)
 
     try:
         offset = int(offset)
     except:
-        offset = 1
-    search = BUTTONS.get(files)
+        offset = 0
+    search = BUTTONS.get(key)
     if not search:
         await query.answer("You are using one of my old messages, please send the request again.", show_alert=True)
         return
