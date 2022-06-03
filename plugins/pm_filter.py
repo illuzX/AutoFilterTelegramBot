@@ -39,8 +39,8 @@ async def give_filter(client, message):
 @Client.on_callback_query(filters.regex(r"^next"))
 async def key(bot, query):
     ident, req, key, offset = query.data.split("_")
-    if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("Bruh please ask you're request don't be lezzy", show_alert=True)
+    if int(key) not in [bot.from_user.id, 0]:
+        return await bot.answer("👀mMm", show_alert=True)
 
     try:
         offset = int(offset)
@@ -365,8 +365,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     protect_content=True if ident == "filep" else False 
                 )
                 await query.answer('Check PM, I have sent files in pm', show_alert=True)
-        except not in query:
-            await query.answer("OkDa", show_alert=True)
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn !', show_alert=True)
         except PeerIdInvalid:
