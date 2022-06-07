@@ -523,7 +523,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode='html'
         )
         
-    elif query.data == "stats":
+    elif query.data == "status":
         await query.message.edit_text(
             text=script.FUN_LETTER_TXT,
             reply_markup=reply_markup,
