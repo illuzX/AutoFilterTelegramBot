@@ -44,7 +44,7 @@ async def key(bot, query):
 @Client.on_callback_query(filters.regex
 (r"^file"))
 async def key2(c , b):
-    files, n_offset, total = b.data.split("-")
+    files, get_size, file_name = b.data.split("#")
     if int(files) not in [b.from_user.id,0]:
       return await b.answer("😋mmm", show_alert=True)
 
