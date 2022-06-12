@@ -43,10 +43,10 @@ async def key(bot, query):
         return await query.answer("🙄mmM", show_alert=True)
 @Client.on_callback_query(filters.regex
 (r"^file"))
-async def key2(c , b):
-    files, get_size, file_name = b.data.split("#")
-    if int(files) not in [b.from_user.id,0]:
-      return await b.answer("😋mmm", show_alert=True)
+async def key2(bot, query):
+    files, get_size, file_name = query.data.split('-')
+    if int(files_name) not in [query.from_user.id,0]:
+      return await query.answer("😋mmm", show_alert=True)
 
     try:
         offset = int(offset)
