@@ -37,16 +37,10 @@ async def give_filter(client, message):
         await auto_filter(client, message)
 
 @Client.on_callback_query(filters.regex(r"^next"))
-async def next_page(bot, query):
+async def key(bot, query):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("Bruh please ask you're request don't be lezzy", show_alert=True)
-@Client.on_callback_query(filters.regex(r"^key"))
-async def kye_user(bot, query):
-    ident, req, key, offset = query.data.split("_")
-    if int(req) not in [query.from_user.id, 0]:
-        return await query.answer("Bruh please ask you're request don't be lezzy", show_alert=True)
-
+        return await query.answer("🙄mmM", show_alert=True)
     try:
         offset = int(offset)
     except:
@@ -88,7 +82,7 @@ async def kye_user(bot, query):
             for file in files
         ]
 
-    if 0 < offset <= 10:
+    if 0 < offset <= 5:
         off_set = 0
     elif offset == 0:
         off_set = None
@@ -96,14 +90,15 @@ async def kye_user(bot, query):
         off_set = offset - 10
     if n_offset == 0:
         btn.append(
-            [InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
-             InlineKeyboardButton(f"📃 Pages {round(int(offset) / 10) + 1} / {round(total / 10)}",
+            [InlineKeyboardButton("👈 
+            BACK", callback_data=f"next_{req}_{key}_{off_set}"),
+             InlineKeyboardButton(f"📒 Pages {round(int(offset) / 10) + 1} / {round(total / 10)}",
                                   callback_data="pages")]
         )
     elif off_set is None:
         btn.append(
-            [InlineKeyboardButton(f"🗓 {round(int(offset) / 10) + 1} / {round(total / 10)}", callback_data="pages"),
-             InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")])
+            [InlineKeyboardButton(f"🗓 {round(int(offset) / 5) + 1} / {round(total / 5)}", callback_data="pages"),
+             InlineKeyboardButton("NEXT ⚡", callback_data=f"next_{req}_{key}_{n_offset}")])
     else:
         btn.append(
             [
@@ -140,7 +135,7 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            k = await query.message.edit('This Movie Not Found In DataBase')
+            k = await query.message.edit("sory DuDe I Can't Find this movie 🍿 in my database\nmybe its not released or spelling is incorrect ...")
             await asyncio.sleep(10)
             await k.delete()
 
@@ -528,7 +523,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode='html'
         )
         
-    elif query.data == "stats":
+    elif query.data == "status":
         await query.message.edit_text(
             text=script.FUN_LETTER_TXT,
             reply_markup=reply_markup,
@@ -662,7 +657,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"{file.file_name}",
+                    text=f"🍿{file.file_name}",
                     callback_data=f'{pre}#{file.file_id}',
                 ),
                 InlineKeyboardButton(
@@ -742,7 +737,7 @@ async def advantage_spell_chok(msg):
     query = re.sub(
         r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|br((o|u)h?)*|^h(e|a)?(l)*(o)*|mal(ayalam)?|t(h)?amil|file|that|find|und(o)*|kit(t(i|y)?)?o(w)?|thar(u)?(o)*w?|kittum(o)*|aya(k)*(um(o)*)?|full\smovie|any(one)|with\ssubtitle(s)?)",
         "", msg.text, flags=re.IGNORECASE)  # plis contribute some common words
-    query = query.strip() + " movie"
+    query = query.strip() + "movie , malayalam , tamil , hindi "
     g_s = await search_gagala(query)
     g_s += await search_gagala(msg.text)
     gs_parsed = []
