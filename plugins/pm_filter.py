@@ -90,8 +90,8 @@ async def key(bot, query):
         off_set = offset - 10
     if n_offset == 0:
         btn.append(
-            [InlineKeyboardButton(f"👈 
-            BACK", callback_data=f"next_{req}_{key}_{off_set}"),
+            [InlineKeyboardButton("👈 
+            BACK ", callback_data=f"next_{req}_{key}_{off_set}"),
              InlineKeyboardButton(f"📒 Pages {round(int(offset) / 10) + 1} / {round(total / 10)}",
                                   callback_data="pages")]
         )
